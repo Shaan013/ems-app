@@ -53,6 +53,26 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Team Directory`
+  String get titleTeamDirectory {
+    return Intl.message(
+      'Team Directory',
+      name: 'titleTeamDirectory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data Not Found`
+  String get ErrorDataNotFound {
+    return Intl.message(
+      'Data Not Found',
+      name: 'ErrorDataNotFound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
