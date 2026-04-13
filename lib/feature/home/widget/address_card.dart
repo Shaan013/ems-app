@@ -27,12 +27,24 @@ class AddressCard extends StatelessWidget {
             padding: AppEdgeInsets.m,
             child: Row(
               children: [
-                Radio(value: address),
+                // CircleAvatar(
+                //   radius: 30,
+                //   backgroundColor: Colors.blue,
+                //   child: Text(
+                //     address[0].toUpperCase(),
+                //     style: TextStyle(
+                //       color: Colors.white,
+                //       fontSize: 24,
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //   ),
+                // ),
+                // 10.horizontalSpace,
                 Expanded(
                   child: Text(
                     address,
                     style: TextTheme.of(context).titleMedium,
-                    maxLines: 2,
+                    maxLines: 4,
                   ),
                 ),
               ],

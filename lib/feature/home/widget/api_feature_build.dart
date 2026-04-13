@@ -1,9 +1,12 @@
+import 'package:ems/data/models/Data.dart';
+import 'package:ems/data/models/Ems_data_model.dart';
 import 'package:ems/feature/home/widget/address_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ApiFeatureBuild extends StatelessWidget {
   final Future future;
+
   // final Widget child;
 
   const ApiFeatureBuild({
@@ -14,33 +17,46 @@ class ApiFeatureBuild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: future,
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Center(child: Text("Data Not Found"));
-        }
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return SizedBox(
-            height: (0.8).sh,
-            width: (0.9).sw,
-            child: Center(child: CircularProgressIndicator()),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: FutureBuilder(
+        future: future,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(child: Text("Data Not Found"));
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return SizedBox(
+              height: (0.8).sh,
+              width: (0.9).sw,
+              child: Center(child: CircularProgressIndicator()),
+            );
+          }
+          if (snapshot.hasData || snapshot.data == null) {
+            Center(child: Text("date empty"));
+          }
+          final EmsDataModel data = snapshot.data;
+          debugPrint("date receive ");
+          final List<Data> listData;
+          if (data.data == null) {
+            listData = [];
+          } else {
+            listData = data.data!;
+          }
+          return ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: listData.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              final res = listData[index];
+              return AddressCard(
+                address:
+                    "Name : ${res.employeeName} \nsalary : ${res.employeeSalary} \nAge : ${res.employeeAge ?? 0}",
+              );
+            },
           );
-        }
-        if (snapshot.hasData || snapshot.data == null) {
-          Center(child: Text("date empty"));
-        }
-        final data = snapshot.data;
-        // final List<> article = data?.articles ?? [];
-        return ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          itemCount: 5,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return AddressCard(address: "shaan");
-          },
-        );
-      },
+        },
+      ),
     );
   }
 }

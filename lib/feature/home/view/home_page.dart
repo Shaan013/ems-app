@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
           style: textTheme.titleLarge,
         ),
       ),
-      body: ApiFeatureBuild(future: eData),
+      body: SingleChildScrollView(child: ApiFeatureBuild(future: eData)),
     );
   }
 }
