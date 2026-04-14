@@ -23,7 +23,14 @@ class ApiFeatureBuild extends StatelessWidget {
         future: future,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Center(child: Text("Data Not Found"));
+            return SizedBox(
+              height: (0.8).sh,
+              child: Center(
+                child: Text(
+                  snapshot.error.toString().replaceFirst("Exception:", ""),
+                ),
+              ),
+            );
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
             return SizedBox(

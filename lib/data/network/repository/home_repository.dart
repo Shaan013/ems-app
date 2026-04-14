@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ems/data/models/Ems_data_model.dart';
-import 'package:ems/data/network/api_services.dart';
+import 'package:ems/data/network/services/api_services.dart';
 
 class HomeRepository {
   static Future<EmsDataModel?> getEmsData() async {

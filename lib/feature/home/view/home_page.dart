@@ -1,8 +1,9 @@
 import 'package:ems/data/models/Ems_data_model.dart';
-import 'package:ems/data/repository/home_repository.dart';
 import 'package:ems/feature/home/widget/api_feature_build.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../data/network/repository/home_repository.dart';
 import '../../../utils/generated/l10n.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,18 +14,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final Future<EmsDataModel?> eData;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    eData = getuserData();
-    debugPrint("e data (home page) : ${eData}");
-  }
-
   Future<EmsDataModel?> getuserData() async {
     return await HomeRepository.getEmsData();
+  }
+
+  Future<void> refresh() async {
+    setState(() {});
+    await Duration(seconds: 1);
+    return;
   }
 
   @override
@@ -32,13 +29,26 @@ class _HomePageState extends State<HomePage> {
     final textTheme = TextTheme.of(context);
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(28.r),
+        ),
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
       appBar: AppBar(
         title: Text(
           S.of(context).titleTeamDirectory,
           style: textTheme.titleLarge,
         ),
       ),
-      body: SingleChildScrollView(child: ApiFeatureBuild(future: eData)),
+      body: RefreshIndicator(
+        onRefresh: () async => refresh(),
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: ApiFeatureBuild(future: getuserData()),
+        ),
+      ),
     );
   }
 }
