@@ -10,16 +10,16 @@ import '../../../core/theme/app_input_decoration.dart';
 import '../../../utils/generated/l10n.dart';
 import '../wigets/elevated_button_full_width.dart';
 
-class AddEmployee extends StatefulWidget {
+class AddEmployeePage extends StatefulWidget {
   final Data? data;
 
-  const AddEmployee({super.key, this.data});
+  const AddEmployeePage({super.key, this.data});
 
   @override
-  State<AddEmployee> createState() => _AddEmployeeState();
+  State<AddEmployeePage> createState() => _AddEmployeePageState();
 }
 
-class _AddEmployeeState extends State<AddEmployee> {
+class _AddEmployeePageState extends State<AddEmployeePage> {
   late final AddEmployeeController _addEmployeeController;
 
   @override

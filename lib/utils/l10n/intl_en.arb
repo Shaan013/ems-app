@@ -7,5 +7,6 @@
   "lblAdd": "Add",
   "lblUpdate": "Update",
   "headingAddNewEmployee": "Add New Employee",
-  "headlineEditEmployeeData": "Edit Employee data"
+  "headlineEditEmployeeData": "Edit Employee data",
+  "msmDoYouReallyWantToDeleteEmployee": "Do You really want to DELETE EMPLOYEE !!!"
 }

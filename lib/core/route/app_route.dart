@@ -8,6 +8,6 @@ class AppRoute {
 
   static Map<String, WidgetBuilder> getRouteMap = {
     home: (context) => HomePage(),
-    addEmployee: (context) => AddEmployee(),
+    addEmployee: (context) => AddEmployeePage(),
   };
 }

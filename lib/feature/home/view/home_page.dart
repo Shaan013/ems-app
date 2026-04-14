@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
     debugPrint("next page");
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => AddEmployee()),
+      MaterialPageRoute(builder: (context) => AddEmployeePage()),
     );
   }
 }

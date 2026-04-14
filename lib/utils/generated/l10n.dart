@@ -133,6 +133,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Do You really want to DELETE EMPLOYEE !!!`
+  String get msmDoYouReallyWantToDeleteEmployee {
+    return Intl.message(
+      'Do You really want to DELETE EMPLOYEE !!!',
+      name: 'msmDoYouReallyWantToDeleteEmployee',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -12,4 +12,11 @@ class HomeRepository {
     final EmsDataModel dataModel = EmsDataModel.fromJson(response.data);
     return dataModel;
   }
+
+  static Future<bool?> deleteEmployeeById({required int id}) async {
+    final Response? response = await ApiServices.delectEmployees(id: id);
+    if (response?.statusCode != 200 || response == null) {
+      return null;
+    }
+  }
 }

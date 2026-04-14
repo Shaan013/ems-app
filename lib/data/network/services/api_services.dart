@@ -42,18 +42,17 @@ class ApiServices {
   }
 
   // fuction for delect user or employees
-  Future<Response?> delectEmployees({required int id}) async {
+  static Future<Response?> delectEmployees({required int id}) async {
     final ApiClint apiClint = ApiClint();
     try {
       final Response response = await apiClint.dio.delete(
         ApiEndpoint.delete + id.toString(),
       );
-
       return response;
     } on DioException catch (e) {
       _dioExceptionSwitch(e);
     } catch (e) {
-      debugPrint("some think want wrong ${e} ");
+      throw Exception("some think want wrong ${e} ");
     }
   }
 }

@@ -1,8 +1,12 @@
+import 'package:ems/core/widgets/alert_dailog.dart';
 import 'package:ems/data/models/Data.dart';
 import 'package:ems/data/models/Ems_data_model.dart';
 import 'package:ems/feature/home/widget/address_card.dart';
+import 'package:ems/feature/mange_employess/view/add_employes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../utils/generated/l10n.dart';
 
 class ApiFeatureBuild extends StatelessWidget {
   final Future future;
@@ -55,10 +59,21 @@ class ApiFeatureBuild extends StatelessWidget {
             itemCount: listData.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              final res = listData[index];
+              final Data res = listData[index];
               return AddressCard(
                 address:
                     "Name : ${res.employeeName} \nsalary : ${res.employeeSalary} \nAge : ${res.employeeAge ?? 0}",
+                onDelete: () => alertDailog(
+                  context,
+                  message: S.of(context).msmDoYouReallyWantToDeleteEmployee,
+                  onAgree: () {},
+                ),
+                onEdit: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddEmployeePage(data: res),
+                  ),
+                ),
               );
             },
           );

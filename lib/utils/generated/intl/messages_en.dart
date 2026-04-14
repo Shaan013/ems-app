@@ -36,6 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Employee salary",
     ),
     "lblUpdate": MessageLookupByLibrary.simpleMessage("Update"),
+    "msmDoYouReallyWantToDeleteEmployee": MessageLookupByLibrary.simpleMessage(
+      "Do You really want to DELETE EMPLOYEE !!!",
+    ),
     "titleTeamDirectory": MessageLookupByLibrary.simpleMessage(
       "Team Directory",
     ),
