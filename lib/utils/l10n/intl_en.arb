@@ -1,4 +1,11 @@
 {
   "titleTeamDirectory": "Team Directory",
-  "ErrorDataNotFound": "Data Not Found"
+  "ErrorDataNotFound": "Data Not Found",
+  "lblEmployeeName": "Employee Name",
+  "lblEmployeeAge": "Employee Age",
+  "lblEmployeeSalary": "Employee salary",
+  "lblAdd": "Add",
+  "lblUpdate": "Update",
+  "headingAddNewEmployee": "Add New Employee",
+  "headlineEditEmployeeData": "Edit Employee data"
 }

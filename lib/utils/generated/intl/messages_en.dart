@@ -23,6 +23,19 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "ErrorDataNotFound": MessageLookupByLibrary.simpleMessage("Data Not Found"),
+    "headingAddNewEmployee": MessageLookupByLibrary.simpleMessage(
+      "Add New Employee",
+    ),
+    "headlineEditEmployeeData": MessageLookupByLibrary.simpleMessage(
+      "Edit Employee data",
+    ),
+    "lblAdd": MessageLookupByLibrary.simpleMessage("Add"),
+    "lblEmployeeAge": MessageLookupByLibrary.simpleMessage("Employee Age"),
+    "lblEmployeeName": MessageLookupByLibrary.simpleMessage("Employee Name"),
+    "lblEmployeeSalary": MessageLookupByLibrary.simpleMessage(
+      "Employee salary",
+    ),
+    "lblUpdate": MessageLookupByLibrary.simpleMessage("Update"),
     "titleTeamDirectory": MessageLookupByLibrary.simpleMessage(
       "Team Directory",
     ),

@@ -73,6 +73,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Employee Name`
+  String get lblEmployeeName {
+    return Intl.message(
+      'Employee Name',
+      name: 'lblEmployeeName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Employee Age`
+  String get lblEmployeeAge {
+    return Intl.message(
+      'Employee Age',
+      name: 'lblEmployeeAge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Employee salary`
+  String get lblEmployeeSalary {
+    return Intl.message(
+      'Employee salary',
+      name: 'lblEmployeeSalary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get lblAdd {
+    return Intl.message('Add', name: 'lblAdd', desc: '', args: []);
+  }
+
+  /// `Update`
+  String get lblUpdate {
+    return Intl.message('Update', name: 'lblUpdate', desc: '', args: []);
+  }
+
+  /// `Add New Employee`
+  String get headingAddNewEmployee {
+    return Intl.message(
+      'Add New Employee',
+      name: 'headingAddNewEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Employee data`
+  String get headlineEditEmployeeData {
+    return Intl.message(
+      'Edit Employee data',
+      name: 'headlineEditEmployeeData',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

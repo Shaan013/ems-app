@@ -1,5 +1,6 @@
 import 'package:ems/data/models/Ems_data_model.dart';
 import 'package:ems/feature/home/widget/api_feature_build.dart';
+import 'package:ems/feature/mange_employess/view/add_employes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(28.r),
         ),
-        onPressed: () {},
+        onPressed: goToAddPage,
         child: Icon(Icons.add),
       ),
       appBar: AppBar(
@@ -49,6 +50,14 @@ class _HomePageState extends State<HomePage> {
           child: ApiFeatureBuild(future: getuserData()),
         ),
       ),
+    );
+  }
+
+  void goToAddPage() {
+    debugPrint("next page");
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddEmployee()),
     );
   }
 }
