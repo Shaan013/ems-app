@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ems/data/models/Data.dart';
 import 'package:ems/data/network/api_clint.dart';
 import 'package:ems/data/network/api_endpoint.dart';
 import 'package:flutter/cupertino.dart';
@@ -46,13 +47,54 @@ class ApiServices {
     final ApiClint apiClint = ApiClint();
     try {
       final Response response = await apiClint.dio.delete(
-        ApiEndpoint.delete + id.toString(),
+        "${ApiEndpoint.delete}/$id",
       );
       return response;
     } on DioException catch (e) {
       _dioExceptionSwitch(e);
     } catch (e) {
       throw Exception("some think want wrong ${e} ");
+    }
+  }
+
+  static Future<Response?> addEmployee({required Data date}) async {
+    final ApiClint apiClint = ApiClint();
+    try {
+      final Response response = await apiClint.dio.post(
+        ApiEndpoint.create,
+        data: date.toJson(),
+      );
+    } on DioException catch (e) {
+      _dioExceptionSwitch(e);
+    } catch (e) {
+      throw Exception("some think want wrong ${e} ");
+    }
+    return null;
+  }
+
+  static Future<Response?> updateEmpoyeeData(Data data) async {
+    final ApiClint apiClint = ApiClint();
+    try {
+      return await apiClint.dio.put(
+        ApiEndpoint.updateEmployee,
+        data: data.toJson(),
+      );
+    } on DioException catch (e) {
+      _dioExceptionSwitch(e);
+    } catch (e) {
+      throw Exception("some think want wrong ${e} ");
+    }
+    return null;
+  }
+
+  static Future<Response?> fetchEmployeeDatabyId(int id) async {
+    final ApiClint apiClint = ApiClint();
+    try {
+      return await apiClint.dio.get("${ApiEndpoint.employees}/$id");
+    } on DioException catch (e) {
+      _dioExceptionSwitch(e);
+    } catch (e) {
+      throw "some thing want to wrong ";
     }
   }
 }

@@ -6,6 +6,7 @@ import '../../../core/theme/app_edge_insets.dart';
 
 class AddressCard extends StatelessWidget {
   final String address;
+  final VoidCallback? onContextTap;
   final VoidCallback? onDelete;
   final VoidCallback? onEdit;
 
@@ -14,6 +15,7 @@ class AddressCard extends StatelessWidget {
     required this.address,
     this.onDelete,
     this.onEdit,
+    this.onContextTap
   });
 
   @override
@@ -23,31 +25,34 @@ class AddressCard extends StatelessWidget {
       color: AppColors.white,
       child: Column(
         children: [
-          Padding(
-            padding: AppEdgeInsets.m,
-            child: Row(
-              children: [
-                // CircleAvatar(
-                //   radius: 30,
-                //   backgroundColor: Colors.blue,
-                //   child: Text(
-                //     address[0].toUpperCase(),
-                //     style: TextStyle(
-                //       color: Colors.white,
-                //       fontSize: 24,
-                //       fontWeight: FontWeight.bold,
-                //     ),
-                //   ),
-                // ),
-                // 10.horizontalSpace,
-                Expanded(
-                  child: Text(
-                    address,
-                    style: TextTheme.of(context).titleMedium,
-                    maxLines: 4,
+          GestureDetector(
+            onTap: onContextTap,
+            child: Padding(
+              padding: AppEdgeInsets.m,
+              child: Row(
+                children: [
+                  // CircleAvatar(
+                  //   radius: 30,
+                  //   backgroundColor: Colors.blue,
+                  //   child: Text(
+                  //     address[0].toUpperCase(),
+                  //     style: TextStyle(
+                  //       color: Colors.white,
+                  //       fontSize: 24,
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // ),
+                  // 10.horizontalSpace,
+                  Expanded(
+                    child: Text(
+                      address,
+                      style: TextTheme.of(context).titleMedium,
+                      maxLines: 4,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           10.verticalSpace,

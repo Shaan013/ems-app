@@ -1,8 +1,11 @@
 import 'package:ems/core/widgets/alert_dailog.dart';
+import 'package:ems/core/widgets/message_snack_bar.dart';
 import 'package:ems/data/models/Data.dart';
 import 'package:ems/data/models/Ems_data_model.dart';
+import 'package:ems/data/network/repository/home_repository.dart';
 import 'package:ems/feature/home/widget/address_card.dart';
 import 'package:ems/feature/mange_employess/view/add_employes.dart';
+import 'package:ems/feature/profile/view/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,13 +14,17 @@ import '../../../utils/generated/l10n.dart';
 class ApiFeatureBuild extends StatelessWidget {
   final Future future;
 
-  // final Widget child;
+  const ApiFeatureBuild({super.key, required this.future});
 
-  const ApiFeatureBuild({
-    super.key,
-    required this.future,
-    // required this.child,
-  });
+  Future<void> handleDeleteEmployee(BuildContext context, int id) async {
+    final EmsDataModel? res = await HomeRepository.deleteEmployeeById(id: id);
+    messageSnackBar(
+      context,
+      message:
+          res?.message ??
+          S.of(context).errorYourDateIsNotDeletePleaseTryAgainLater,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +73,18 @@ class ApiFeatureBuild extends StatelessWidget {
                 onDelete: () => alertDailog(
                   context,
                   message: S.of(context).msmDoYouReallyWantToDeleteEmployee,
-                  onAgree: () {},
+                  onAgree: () {
+                    handleDeleteEmployee(context, res.id!);
+                  },
                 ),
+                onContextTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfilePage(id: res.id!),
+                    ),
+                  );
+                },
                 onEdit: () => Navigator.push(
                   context,
                   MaterialPageRoute(

@@ -37,7 +37,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          _addEmployeeController.isEdit
+          !_addEmployeeController.isEdit
               ? S.of(context).headingAddNewEmployee
               : S.of(context).headlineEditEmployeeData,
         ),

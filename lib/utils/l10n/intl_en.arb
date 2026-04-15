@@ -8,5 +8,7 @@
   "lblUpdate": "Update",
   "headingAddNewEmployee": "Add New Employee",
   "headlineEditEmployeeData": "Edit Employee data",
-  "msmDoYouReallyWantToDeleteEmployee": "Do You really want to DELETE EMPLOYEE !!!"
+  "msmDoYouReallyWantToDeleteEmployee": "Do You really want to DELETE EMPLOYEE !!!",
+  "errorYourDateIsNotDeletePleaseTryAgainLater": "Your Date is not Delete Please Try Again Later",
+  "headlineProfile": "Profile"
 }

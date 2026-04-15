@@ -143,6 +143,21 @@ class S {
       args: [],
     );
   }
+
+  /// `Your Date is not Delete Please Try Again Later`
+  String get errorYourDateIsNotDeletePleaseTryAgainLater {
+    return Intl.message(
+      'Your Date is not Delete Please Try Again Later',
+      name: 'errorYourDateIsNotDeletePleaseTryAgainLater',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get headlineProfile {
+    return Intl.message('Profile', name: 'headlineProfile', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

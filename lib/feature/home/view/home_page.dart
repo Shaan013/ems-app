@@ -30,19 +30,8 @@ class _HomePageState extends State<HomePage> {
     final textTheme = TextTheme.of(context);
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(28.r),
-        ),
-        onPressed: goToAddPage,
-        child: Icon(Icons.add),
-      ),
-      appBar: AppBar(
-        title: Text(
-          S.of(context).titleTeamDirectory,
-          style: textTheme.titleLarge,
-        ),
-      ),
+      floatingActionButton: buildFloatingActionButton(),
+      appBar: buildAppBar(context, textTheme),
       body: RefreshIndicator(
         onRefresh: () async => refresh(),
         child: SingleChildScrollView(
@@ -50,6 +39,25 @@ class _HomePageState extends State<HomePage> {
           child: ApiFeatureBuild(future: getuserData()),
         ),
       ),
+    );
+  }
+
+  AppBar buildAppBar(BuildContext context, TextTheme textTheme) {
+    return AppBar(
+      title: Text(
+        S.of(context).titleTeamDirectory,
+        style: textTheme.titleLarge,
+      ),
+    );
+  }
+
+  FloatingActionButton buildFloatingActionButton() {
+    return FloatingActionButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(28.r),
+      ),
+      onPressed: goToAddPage,
+      child: Icon(Icons.add),
     );
   }
 

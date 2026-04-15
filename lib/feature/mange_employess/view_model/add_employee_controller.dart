@@ -1,9 +1,12 @@
+import 'package:ems/core/widgets/message_snack_bar.dart';
 import 'package:ems/data/models/Data.dart';
+import 'package:ems/data/models/Ems_data_model.dart';
+import 'package:ems/data/network/repository/home_repository.dart';
 import 'package:flutter/material.dart';
 
 class AddEmployeeController {
   final formKey = GlobalKey<FormState>();
-  final isEdit = false;
+  bool isEdit = false;
   final employeeName = TextEditingController();
   final salary = TextEditingController();
   final age = TextEditingController();
@@ -13,30 +16,50 @@ class AddEmployeeController {
     employeeName.text = model.employeeName!;
     salary.text = model.employeeSalary!;
     age.text = model.employeeAge!;
+    isEdit = true;
   }
 
   // Extract a Model from controllers
   Data toModel() {
     return Data(
-      employeeName: this.employeeName.text,
-      employeeSalary: this.salary.text,
-      employeeAge: this.age.text,
+      employeeName: employeeName.text,
+      employeeSalary:salary.text,
+      employeeAge:age.text,
     );
   }
 
+  Future<void> addNewDate() async {
+    debugPrint("add new Date from Add employee page ");
+    HomeRepository.addEmployee(data: toModel());
+  }
+
+  Future<void> upDateData() async {
+    debugPrint("add new Date from Add employee page ");
+    // HomeRepository.addEmployee(data: toModel());
+  }
+
+  void _showSnankBar(BuildContext context, EmsDataModel? res) {
+    if (res?.status == "success") {
+      messageSnackBar(context, message: res!.message.toString());
+      Navigator.pop(context, false);
+    } else {
+      messageSnackBar(context, message: "Some thing want wrong");
+    }
+  }
 
   Future<void> handleTrySubmit(BuildContext context) async {
     // debugPrint(" i am in handle try submit ");
-    final res = this.formKey.currentState!.validate();
-    print("res: $res");
+    final res = formKey.currentState!.validate();
+    // print("res: $res");
     if (res) {
-      print("isEdit :$isEdit");
+      // print("isEdit :$isEdit");
       if (isEdit == true) {
-        debugPrint("in try ");
+        final apiRes = await HomeRepository.upDateEmployee(toModel());
+        _showSnankBar(context, apiRes);
       } else {
-        debugPrint("in try false ");
+        final apiRes = await HomeRepository.addEmployee(data: toModel());
+        _showSnankBar(context, apiRes);
       }
-      Navigator.pop(context, false);
     }
   }
 
