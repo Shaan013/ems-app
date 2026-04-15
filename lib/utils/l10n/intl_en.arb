@@ -10,5 +10,9 @@
   "headlineEditEmployeeData": "Edit Employee data",
   "msmDoYouReallyWantToDeleteEmployee": "Do You really want to DELETE EMPLOYEE !!!",
   "errorYourDateIsNotDeletePleaseTryAgainLater": "Your Date is not Delete Please Try Again Later",
-  "headlineProfile": "Profile"
+  "headlineProfile": "Profile",
+  "lblSalary": "Salary",
+  "lblAge": "Age",
+  "alblNme": "Name",
+  "lblRefresh": "Refresh"
 }

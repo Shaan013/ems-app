@@ -25,11 +25,6 @@ class HomeRepository {
 
   static Future<EmsDataModel?> addEmployee({required Data data}) async {
     final Response? response = await ApiServices.addEmployee(date: data);
-    // if (response?.statusCode != 200 || response == null) {
-    //   return null;
-    // }
-    // final fDate = EmsDataModel.fromJson(response.data);
-    // debugPrint("f date : ${fDate}");
     return _convertToModel(response);
   }
 

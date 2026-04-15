@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "ErrorDataNotFound": MessageLookupByLibrary.simpleMessage("Data Not Found"),
+    "alblNme": MessageLookupByLibrary.simpleMessage("Name"),
     "errorYourDateIsNotDeletePleaseTryAgainLater":
         MessageLookupByLibrary.simpleMessage(
           "Your Date is not Delete Please Try Again Later",
@@ -35,11 +36,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "headlineProfile": MessageLookupByLibrary.simpleMessage("Profile"),
     "lblAdd": MessageLookupByLibrary.simpleMessage("Add"),
+    "lblAge": MessageLookupByLibrary.simpleMessage("Age"),
     "lblEmployeeAge": MessageLookupByLibrary.simpleMessage("Employee Age"),
     "lblEmployeeName": MessageLookupByLibrary.simpleMessage("Employee Name"),
     "lblEmployeeSalary": MessageLookupByLibrary.simpleMessage(
       "Employee salary",
     ),
+    "lblRefresh": MessageLookupByLibrary.simpleMessage("Refresh"),
+    "lblSalary": MessageLookupByLibrary.simpleMessage("Salary"),
     "lblUpdate": MessageLookupByLibrary.simpleMessage("Update"),
     "msmDoYouReallyWantToDeleteEmployee": MessageLookupByLibrary.simpleMessage(
       "Do You really want to DELETE EMPLOYEE !!!",

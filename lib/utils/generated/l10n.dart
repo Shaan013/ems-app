@@ -158,6 +158,26 @@ class S {
   String get headlineProfile {
     return Intl.message('Profile', name: 'headlineProfile', desc: '', args: []);
   }
+
+  /// `Salary`
+  String get lblSalary {
+    return Intl.message('Salary', name: 'lblSalary', desc: '', args: []);
+  }
+
+  /// `Age`
+  String get lblAge {
+    return Intl.message('Age', name: 'lblAge', desc: '', args: []);
+  }
+
+  /// `Name`
+  String get alblNme {
+    return Intl.message('Name', name: 'alblNme', desc: '', args: []);
+  }
+
+  /// `Refresh`
+  String get lblRefresh {
+    return Intl.message('Refresh', name: 'lblRefresh', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

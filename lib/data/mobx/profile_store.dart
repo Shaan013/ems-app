@@ -2,13 +2,16 @@ import 'package:ems/data/models/Ems_data_model.dart';
 import 'package:ems/data/network/repository/home_repository.dart';
 import 'package:mobx/mobx.dart';
 
-part 'Profile_store.g.dart';
+part 'profile_store.g.dart';
 
 class ProfileStore = _profileStore with _$ProfileStore;
 
 abstract class _profileStore with Store {
   @observable
   ObservableFuture<EmsDataModel?> date = ObservableFuture.value(null);
+
+  @observable
+  String? errorMessage;
 
   @computed
   bool get isLoading => date.status == FutureStatus.pending;
@@ -20,10 +23,15 @@ abstract class _profileStore with Store {
   bool get isSuccess => date.status == FutureStatus.fulfilled;
 
   @action
-  Future<void> fetchUser(int id)async{
-    date =ObservableFuture(
-      HomeRepository.
-    )
+  Future<void> fetchUser(int id) async {
+    errorMessage = "";
+    date = ObservableFuture(
+      HomeRepository.getEmployeeById(id).catchError((e) {
+        errorMessage = e.toString();
+        throw e;
+      }),
+    );
 
+    await date;
   }
 }
