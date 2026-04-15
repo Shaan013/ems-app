@@ -23,8 +23,8 @@ class AddEmployeeController {
   Data toModel() {
     return Data(
       employeeName: employeeName.text,
-      employeeSalary:salary.text,
-      employeeAge:age.text,
+      employeeSalary: salary.text,
+      employeeAge: age.text,
     );
   }
 
@@ -54,11 +54,19 @@ class AddEmployeeController {
     if (res) {
       // print("isEdit :$isEdit");
       if (isEdit == true) {
-        final apiRes = await HomeRepository.upDateEmployee(toModel());
-        _showSnankBar(context, apiRes);
+        try {
+          final apiRes = await HomeRepository.upDateEmployee(toModel());
+          _showSnankBar(context, apiRes);
+        } catch (e) {
+          messageSnackBar(context, message: e.toString());
+        }
       } else {
-        final apiRes = await HomeRepository.addEmployee(data: toModel());
-        _showSnankBar(context, apiRes);
+        try {
+          final apiRes = await HomeRepository.addEmployee(data: toModel());
+          _showSnankBar(context, apiRes);
+        }catch (e){
+          messageSnackBar(context, message: e.toString());
+        }
       }
     }
   }
